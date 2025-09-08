@@ -5,6 +5,7 @@ import ThumbsUp from '@/assets/images/thumbsup.svg'
 import CreditCard from '@/assets/images/creditCard.svg'
 import HomeTown from '@/assets/images/hometown.svg'
 import Link from 'next/link'
+import Cities from '@/components/Cities'
 
 export default function Home() {
   return (
@@ -92,6 +93,23 @@ export default function Home() {
           show="newest"
           type="grid"
         />
+      </section>
+
+      <section className="bg-light2 py-16">
+        <div className="container px-32 mx-auto">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold max-w-sm">
+              Browse Packages City Recomendation
+            </h2>
+            <Link
+              href={`${process.env.HOST_APP}/cities`}
+              className="border border-dark1 px-5 py-3 text-center rounded-full font-semibold"
+            >
+              Explore All
+            </Link>
+          </div>
+          <Cities />
+        </div>
       </section>
     </main>
   )
