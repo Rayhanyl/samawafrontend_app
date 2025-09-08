@@ -1,11 +1,10 @@
 import Header from '@/components/Header'
 import WeddingPackagesWrapper from '@/components/WeddingPackages'
 import Slider from '@/components/WeddingPackages'
-import ThumbsUp from '@/assets/images/thumbsup.svg' 
-import CreditCard from '@/assets/images/creditCard.svg' 
-import HomeTown from '@/assets/images/hometown.svg' 
+import ThumbsUp from '@/assets/images/thumbsup.svg'
+import CreditCard from '@/assets/images/creditCard.svg'
+import HomeTown from '@/assets/images/hometown.svg'
 import Link from 'next/link'
-
 
 export default function Home() {
   return (
@@ -24,7 +23,7 @@ export default function Home() {
         <div className="grid grid-cols-3 gap-10">
           <div className="flex flex-col border rounded-3xl p-8 gap-y-5 items-start">
             <span className="text-color2">
-              <ThumbsUp/>
+              <ThumbsUp />
             </span>
             <span className="flex flex-col gap-y-2">
               <h6 className="font-bold text-xl">Dipercaya Sejak 1970</h6>
@@ -41,7 +40,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col border rounded-3xl p-8 gap-y-5 items-start">
             <span className="text-color2">
-              <CreditCard/>
+              <CreditCard />
             </span>
             <span className="flex flex-col gap-y-2">
               <h6 className="font-bold text-xl">Dipercaya Sejak 1970</h6>
@@ -59,7 +58,7 @@ export default function Home() {
 
           <div className="flex flex-col border rounded-3xl p-8 gap-y-5 items-start">
             <span className="text-color2">
-              <HomeTown className="w-[50px] h-[50px]"/>
+              <HomeTown className="w-[50px] h-[50px]" />
             </span>
             <span className="flex flex-col gap-y-2">
               <h6 className="font-bold text-xl">Dipercaya Sejak 1970</h6>
@@ -75,6 +74,24 @@ export default function Home() {
             </Link>
           </div>
         </div>
+      </section>
+
+      <section className="container mx-auto flex flex-col">
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-3xl font-bold max-w-sm">
+            Our Latest & Best Wedding Packages
+          </h2>
+          <Link
+            href="/packages"
+            className="border border-dark1 px-5 py-3 text-center rounded-full font-semibold"
+          >
+            Explore All
+          </Link>
+        </div>
+        <WeddingPackagesWrapper
+          show="newest"
+          type="grid"
+        />
       </section>
     </main>
   )

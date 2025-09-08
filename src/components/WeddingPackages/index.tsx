@@ -12,11 +12,60 @@ import Popular from '@/assets/images/popular.svg'
 import Image from 'next/image'
 import thousands from '@/libs/thousands'
 import Link from 'next/link'
+import Home from '@/app/page'
 
 type PropsWeddingPackagesWrapper = {
   show: Tshow
 
   type: 'grid' | 'slider'
+}
+
+function WeddingPackageGrid({ data }: { data: TPackage[] }) {
+  return (
+    <div className="grid grid-cols-4 gap-7">
+      {data.map((weddingPackage) => {
+        return (
+          <div className="flex flex-col gap-y-4 relative" key={weddingPackage.id}>
+            <Link
+              href={`${process.env.HOST_APP}/packages/${weddingPackage.slug}`}
+              className="absolute inset-0 z-10"
+            ></Link>
+            <span className="relative h-[300px] rounded-3xl overflow-hidden">
+              {weddingPackage.isPopular === 1 && (
+                <span className="absolute z-10 top-5 left-5">
+                  <span className="bg-color1 rounded-full text-light1 inline-flex gap-x-2 items-center text-sm py-1 px-3 uppercase">
+                    <Popular />
+                    Popular
+                  </span>
+                </span>
+              )}
+              <Image
+                fill
+                className="w-full h-full object-cover object-center"
+                src={weddingPackage.thumbnail}
+                alt={weddingPackage.name}
+                sizes="(max-width: 768px) 100vw"
+              />
+            </span>
+            <h6 className="text-xl font-bold">{weddingPackage.name}</h6>
+            <span className="flex flex-col gap-[14px]">
+              <span className="flex gap-x-2 items-center">
+                <Pinpoint />
+                {weddingPackage.city.name}
+              </span>
+              {/* <span className="flex gap-x-2 items-center">
+                <Hometown />
+                Tentram
+              </span> */}
+            </span>
+            <span className="text-color2 font-bold">
+              Rp {thousands(weddingPackage.price)}
+            </span>
+          </div>
+        )
+      })}
+    </div>
+  )
 }
 
 function WeddingPackageSlider({ data }: { data: TPackage[] }) {
@@ -58,7 +107,7 @@ function WeddingPackageSlider({ data }: { data: TPackage[] }) {
                     {slide.city.name}
                   </span>
                   <span className="flex gap-x-2 items-center">
-                    <Hometown className="w-[21px] h-[21px]"/>
+                    <Hometown className="w-[21px] h-[21px]" />
                     Tentram
                   </span>
                 </span>
@@ -84,7 +133,11 @@ async function WeddingPackagesWrapper({
   const { data }: { data: TPackage[] } = await getData(show)
 
   if (type === 'grid') {
-    return <div className="">Grid</div>
+    return (
+      <div className="">
+        <WeddingPackageGrid data={data} />;
+      </div>
+    )
   }
 
   if (type === 'slider') {
