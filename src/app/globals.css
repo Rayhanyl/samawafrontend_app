@@ -15,8 +15,8 @@
   transform: translateY(-50%) rotate3d(1, 1, 1, 0deg);
 }
 
-input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-calendar-picker-indicator {
+input[type='date']::-webkit-inner-spin-button,
+input[type='date']::-webkit-calendar-picker-indicator {
   opacity: 0;
   position: absolute;
   z-index: 20;

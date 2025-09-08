@@ -12,7 +12,11 @@ const colors = {
 };
 
 module.exports = {
-  content: ["./*.html", "./src/**/*.{js,ts,jsx,tsx}", "./*.{js,ts,jsx,tsx}"],
+  content: [
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/assets/images/*.svg",
+  ],
   theme: {
     extend: {
       colors: {
