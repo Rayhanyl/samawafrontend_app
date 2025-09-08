@@ -20,11 +20,12 @@ type PropsWeddingPackagesWrapper = {
 }
 
 function WeddingPackageSlider({ data }: { data: TPackage[] }) {
-    console.log(data);
-    
   return (
     <div className="relative">
-      <Slider swiperClassName="w-full h-[480px]" swiperSlideClassName="-mx-10 px-12 xl:max-w-5xl 2xl:max-w-7xl">
+      <Slider
+        swiperClassName="w-full h-[480px]"
+        swiperSlideClassName="-mx-10 px-12 xl:max-w-5xl 2xl:max-w-7xl"
+      >
         {data.map((slide) => {
           return (
             <div
@@ -33,26 +34,22 @@ function WeddingPackageSlider({ data }: { data: TPackage[] }) {
             >
               <figure className="w-full h-full absolute">
                 <Image
-                fill
+                  fill
                   className="w-full h-full object-cover object-center"
                   src={slide.thumbnail}
                   alt={slide.name}
-                  sizes='(max-width: 768px) 100vw'
+                  sizes="(max-width: 768px) 100vw"
                 />
               </figure>
               <div className="card-slide-content flex flex-col items-start gap-y-5">
                 <span className="bg-color1 rounded-full text-light1 inline-flex gap-x-2 items-center text-sm py-1 px-3 uppercase">
-                  <Popular/>
+                  <Popular />
                   Popular
                 </span>
                 <span className="flex flex-col gap-y-1">
-                  <h6 className="text-[28px] font-bold">
-                    {slide.name}
-                  </h6>
+                  <h6 className="text-[28px] font-bold">{slide.name}</h6>
                   <span className="text-xl text-color2 font-semibold">
-                    Rp.{
-                      thousands(slide.price)
-                    }
+                    Rp.{thousands(slide.price)}
                   </span>
                 </span>
                 <span className="flex gap-x-4">
@@ -61,7 +58,7 @@ function WeddingPackageSlider({ data }: { data: TPackage[] }) {
                     {slide.city.name}
                   </span>
                   <span className="flex gap-x-2 items-center">
-                    <Hometown />
+                    <Hometown className="w-[21px] h-[21px]"/>
                     Tentram
                   </span>
                 </span>
