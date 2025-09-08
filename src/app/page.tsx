@@ -6,6 +6,7 @@ import CreditCard from '@/assets/images/creditCard.svg'
 import HomeTown from '@/assets/images/hometown.svg'
 import Link from 'next/link'
 import Cities from '@/components/Cities'
+import Testimonials from '@/components/Testimonials'
 
 export default function Home() {
   return (
@@ -110,6 +111,22 @@ export default function Home() {
           </div>
           <Cities />
         </div>
+      </section>
+
+      <section className="flex flex-col">
+        <div className="container mx-auto flex justify-between items-center mb-8">
+          <h2 className="text-3xl font-bold max-w-xs">
+            Happy Stories of Our Wedding
+          </h2>
+          <Link
+            href={`${process.env.HOST_APP}/testimonials`}
+            className="border border-dark1 px-5 py-3 text-center rounded-full font-semibold"
+          >
+            Explore All
+          </Link>
+        </div>
+
+        <Testimonials />
       </section>
     </main>
   )
