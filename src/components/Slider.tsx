@@ -40,7 +40,7 @@ function Slider({ children, swiperClassName, swiperSlideClassName }: Props) {
           </SwiperSlide>
         )
       })}
-      {Children.toArray(children).map((item: any) => {
+            {Children.toArray(children).map((item: any) => {
         return (
           <SwiperSlide
             className={swiperSlideClassName}

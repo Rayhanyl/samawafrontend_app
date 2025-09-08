@@ -20,14 +20,17 @@ type PropsWeddingPackagesWrapper = {
   type: 'grid' | 'slider'
 }
 
-function WeddingPackageGrid({ data }: { data: TPackage[] }) {
+export function WeddingPackageGrid({ data }: { data: TPackage[] }) {
   return (
     <div className="grid grid-cols-4 gap-7">
       {data.map((weddingPackage) => {
         return (
-          <div className="flex flex-col gap-y-4 relative" key={weddingPackage.id}>
+          <div
+            className="flex flex-col gap-y-4 relative"
+            key={weddingPackage.id}
+          >
             <Link
-              href={`${process.env.HOST_APP}/packages/${weddingPackage.slug}`}
+              href={`/packages/${weddingPackage.slug}`}
               className="absolute inset-0 z-10"
             ></Link>
             <span className="relative h-[300px] rounded-3xl overflow-hidden">
@@ -38,7 +41,7 @@ function WeddingPackageGrid({ data }: { data: TPackage[] }) {
                     Popular
                   </span>
                 </span>
-              )}
+              )}  
               <Image
                 fill
                 className="w-full h-full object-cover object-center"
@@ -68,7 +71,7 @@ function WeddingPackageGrid({ data }: { data: TPackage[] }) {
   )
 }
 
-function WeddingPackageSlider({ data }: { data: TPackage[] }) {
+export function WeddingPackageSlider({ data }: { data: TPackage[] }) {
   return (
     <div className="relative">
       <Slider

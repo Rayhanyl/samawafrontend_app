@@ -21,3 +21,5 @@ const page = (request: Request) => {
     }
   return null
 }
+
+export default page
