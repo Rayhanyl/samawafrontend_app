@@ -1,26 +1,38 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from 'next'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: "Samawa",
-  description: "Get your wedding done",
-};
+  title: 'Samawa',
+  description: 'Get your wedding done',
+  icons: {
+    icon: '/logo-samawa.png',
+    shortcut: '/logo-samawa.png',
+    apple: '/logo-samawa.png',
+  },
+}
 
 export default function RootLayout({
   children,
-  modal
+  modal,
 }: Readonly<{
-  children: React.ReactNode;
-  modal: React.ReactNode;
+  children: React.ReactNode
+  modal: React.ReactNode
 }>) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <head>
-        <link rel='preconnect' href='https://fonts.googleapis.com' />
-        <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin="anonymous" />
         <link
-          href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap'
-          rel='stylesheet'
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+        />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+          rel="stylesheet"
         />
       </head>
       <body>
@@ -28,5 +40,5 @@ export default function RootLayout({
         {modal}
       </body>
     </html>
-  );
+  )
 }

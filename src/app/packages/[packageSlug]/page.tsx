@@ -3,6 +3,7 @@ import Header from '@/components/Header'
 import { TPackage } from '@/components/WeddingPackages/types'
 import { Content as ContentTestimony } from '@/components/Testimonials'
 import { Content as ContentBonus } from '@/components/Bonus'
+import { Content as ContentOrganizer } from '@/components/Organizer'
 import Star from '@/assets/images/star.svg'
 import Pinpoint from '@/assets/images/pinpoint.svg'
 import CheckmarkCircle from '@/assets/images/checkmark-circle.svg'
@@ -120,6 +121,7 @@ export default async function PackageDetailPage({
                   return (
                     <ContentBonus
                       key={bonus.id}
+                      slugPackage={details.slug}
                       data={bonus.bonusPackage}
                     />
                   )
@@ -180,7 +182,7 @@ export default async function PackageDetailPage({
                   </ul>
                   <hr />
                   <h6 className="font-bold">Wedding Organizer</h6>
-                  {/* WO */}
+                  <ContentOrganizer data={details.weddingOrganizer}/>
                   <hr />
                   <Link
                     href={`packages/${details.slug}/checkout`}
