@@ -10,11 +10,6 @@ import {
 } from '@/components/WeddingPackages/index'
 import Link from 'next/link'
 import Testimonials from '@/components/Testimonials'
-type Request = {
-  params: {
-    citySlug: string
-  }
-}
 
 async function getData(slug: string) {
   try {
@@ -33,10 +28,10 @@ async function getData(slug: string) {
 }
 
 export async function generateMetadata(
-  { params }: Request,
+  { params }: { params: Promise<{ citySlug: string }> },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const { citySlug } = params
+  const { citySlug } = await params
   const { data: city }: { data: TCity | null } = await getData(citySlug)
   const previousImage = (await parent).openGraph?.images || []
 
@@ -48,8 +43,13 @@ export async function generateMetadata(
   }
 }
 
-async function DetailsCityPage({ params }: Request) {
-  const { data: city }: { data: TCity | null } = await getData(params.citySlug)
+export default async function DetailsCityPage({
+  params,
+}: {
+  params: Promise<{ citySlug: string }>
+}) {
+  const { citySlug } = await params
+  const { data: city }: { data: TCity | null } = await getData(citySlug)
 
   if (!city) {
     return <main className="container mx-auto py-16">City not found</main>
@@ -58,12 +58,11 @@ async function DetailsCityPage({ params }: Request) {
   return (
     <main className="flex flex-col gap-y-16">
       <Header />
-      <section className="flex flex-col">
+      <section className="flex flex-col -mt-8">
         <div className="container mx-auto flex justify-between items-center mb-8">
           <span className="flex max-w-sm">
             <h2 className="text-4xl font-bold">
               Wedding Packages in {city.name} City
-              {city.name}
             </h2>
           </span>
 
@@ -90,7 +89,7 @@ async function DetailsCityPage({ params }: Request) {
       <section className="container mx-auto flex flex-col">
         <div className="flex justify-center items-center mb-8">
           <h2 className="text-3xl font-bold max-w-md text-center">
-            browse Our Best Selection Wedding Packages
+            Browse Our Best Selection Wedding Packages
           </h2>
         </div>
         <WeddingPackageGrid data={city.weddingPackages} />
@@ -101,16 +100,14 @@ async function DetailsCityPage({ params }: Request) {
             Happy Stories of Our Wedding
           </h2>
           <Link
-            href='/testimonials'
+            href="/testimonials"
             className="border border-dark1 px-5 py-3 text-center rounded-full font-semibold"
           >
             Explore All
           </Link>
         </div>
-        <Testimonials/>
+        <Testimonials />
       </section>
     </main>
   )
 }
-
-export default DetailsCityPage
