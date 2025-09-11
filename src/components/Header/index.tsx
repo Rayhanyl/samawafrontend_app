@@ -5,9 +5,11 @@ import Logo from '@/assets/images/logo-samawa.svg'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-type Props = {}
+type Props = {
+  hasPadding?: boolean
+}
 
-function Header({}: Props) {
+function Header({hasPadding}: Props) {
   const pathName = usePathname()
   const mainMenus = [
     {
@@ -34,7 +36,9 @@ function Header({}: Props) {
 
   return (
     <>
-      <header className="flex justify-between container mx-auto items-center pt-8">
+      <header className={[
+        "flex justify-between container mx-auto items-center", hasPadding ? "p-5 bg-white rounded-2xl" : "pt-8"
+      ].join(' ')}>
         <span className="flex gap-x-3 items-center">
           <span className="text-color2">
             <Logo />
@@ -55,19 +59,20 @@ function Header({}: Props) {
               }
             }
 
-            return(
-            <li key={menu.key}>
-              <Link
-                href={menu.slug}
-                className={[
-                  'hover:underline',
-                  isActive ? 'font-bold ' : '',
-                ].join(' ')}
-                aria-current={isActive ? 'true' : 'false'}
-              >
-                {menu.label}
-              </Link>
-            </li>)
+            return (
+              <li key={menu.key}>
+                <Link
+                  href={menu.slug}
+                  className={[
+                    'hover:underline',
+                    isActive ? 'font-bold ' : '',
+                  ].join(' ')}
+                  aria-current={isActive ? 'true' : 'false'}
+                >
+                  {menu.label}
+                </Link>
+              </li>
+            )
           })}
         </ul>
         <ul className="flex gap-x-4">

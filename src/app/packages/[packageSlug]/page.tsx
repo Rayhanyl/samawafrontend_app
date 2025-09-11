@@ -11,29 +11,11 @@ import { Metadata, ResolvingMetadata } from 'next'
 import thousands from '@/libs/thousands'
 import Link from 'next/link'
 import Slides from './Slides'
+import { getData } from './actions'
 
 type Props = {
   params: {
     packageSlug: string
-  }
-}
-
-async function getData(slug: string) {
-  try {
-    const res = await fetch(
-      `${process.env.HOST_API}/api/wedding-package/${slug}`,
-      {
-        method: 'GET',
-        cache: 'no-cache',
-      }
-    )
-
-    if (!res.ok) throw new Error('Failed to fetch city')
-
-    return res.json()
-  } catch (error) {
-    console.error(error)
-    return { data: null }
   }
 }
 
@@ -185,7 +167,7 @@ export default async function PackageDetailPage({
                   <ContentOrganizer data={details.weddingOrganizer}/>
                   <hr />
                   <Link
-                    href={`packages/${details.slug}/checkout`}
+                    href="{`packages/${details.slug}/checkout`}"
                     className="flex justify-center bg-color2 py-4 w-full text-light1 rounded-full"
                   >
                     Choose This Package
