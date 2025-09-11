@@ -204,7 +204,9 @@ function Form({ data }: Props) {
                 <IconCurrencyDollar />
               </span>
               <span className="">Package Price (1x)</span>
-              <span className="font-bold ml-auto">Rp {thousands(data.price)}</span>
+              <span className="font-bold ml-auto">
+                Rp {thousands(data.price)}
+              </span>
             </div>
 
             <div className="flex items-center gap-x-3">

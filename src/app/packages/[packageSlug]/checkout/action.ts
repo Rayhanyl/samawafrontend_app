@@ -41,10 +41,13 @@ export async function booking(prevState: any, formData: FormData) {
     }
   }
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_HOST_API}/api/booking-transaction`, {
-    method: 'POST',
-    body: formData,
-  })
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST_API}/api/booking-transaction`,
+    {
+      method: 'POST',
+      body: formData,
+    }
+  )
   const data = await res.json()
 
   return redirect(
